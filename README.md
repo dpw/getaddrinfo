@@ -1,7 +1,7 @@
 # gaiquery
 
-This is a simple program that calls getaddrinfo(3) and displays the
-results.
+This is a simple program that calls [getaddrinfo(3)](http://man7.org/linux/man-pages/online/pages/man3/getaddrinfo.3.html)
+and displays the results.
 
 ## Usage
 
