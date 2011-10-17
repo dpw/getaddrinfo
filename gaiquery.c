@@ -41,6 +41,7 @@ static char *socktypestr(int st)
 
 int main(int argc, char *argv[])
 {
+	char *host;
 	struct addrinfo hints;
 	struct addrinfo *result, *rp;
 	int s;
@@ -53,11 +54,16 @@ int main(int argc, char *argv[])
 
 	memset(&hints, 0, sizeof(struct addrinfo));
 	hints.ai_family = AF_UNSPEC;
-	hints.ai_socktype = 0;
 	hints.ai_flags = AI_CANONNAME;
-	hints.ai_protocol = 0;
 
-	s = getaddrinfo(argv[1], argv[2], &hints, &result);
+	/* If the host is empty, turn on AI_PASSIVE */
+	host = argv[1];
+	if (*host == 0) {
+		hints.ai_flags = AI_PASSIVE;
+		host = NULL;
+	}
+
+	s = getaddrinfo(host, argv[2], &hints, &result);
 	if (s != 0) {
 		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(s));
 		return 1;
