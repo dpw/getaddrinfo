@@ -42,13 +42,14 @@ static char *socktypestr(int st)
 int main(int argc, char *argv[])
 {
 	char *host;
+	char *service;
 	struct addrinfo hints;
 	struct addrinfo *result, *rp;
 	int s;
 	char buf[1000];
 
-	if (argc < 3) {
-		fprintf(stderr, "Usage: %s host port\n", argv[0]);
+	if (argc < 2 || argc > 3) {
+		fprintf(stderr, "Usage: %s host [port]\n", argv[0]);
 		return 1;
 	}
 
@@ -63,7 +64,9 @@ int main(int argc, char *argv[])
 		host = NULL;
 	}
 
-	s = getaddrinfo(host, argv[2], &hints, &result);
+	service = argc == 3 ? argv[2] : NULL;
+
+	s = getaddrinfo(host, service, &hints, &result);
 	if (s != 0) {
 		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(s));
 		return 1;
