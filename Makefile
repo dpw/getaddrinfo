@@ -1,4 +1,4 @@
-CFLAGS=-Wall -g
+CFLAGS=-Wall -Wextra -Werror -g
 
 gaiquery: gaiquery.o
 	gcc -o $@ $^
