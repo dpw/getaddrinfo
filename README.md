@@ -1,6 +1,7 @@
-# gaiquery
+# getaddrinfo
 
-This is a simple program that calls [getaddrinfo(3)](http://man7.org/linux/man-pages/online/pages/man3/getaddrinfo.3.html)
+This is a simple program that calls
+[getaddrinfo(3)](http://man7.org/linux/man-pages/man3/getaddrinfo.3.html)
 and displays the results.
 
 ## Usage
@@ -11,14 +12,12 @@ To build do:
 
 And then
 
-    ./gaiquery <hostname> <port number or service name>
+    ./getaddrinfo <hostname> <port number or service name>
 
 E.g.
 
-    $ ./gaiquery google.com http
-    AF_INET SOCK_STREAM tcp 209.85.227.147 80 google.com
-    AF_INET SOCK_STREAM tcp 209.85.227.99 80
-    AF_INET SOCK_STREAM tcp 209.85.227.103 80
-    AF_INET SOCK_STREAM tcp 209.85.227.104 80
-    AF_INET SOCK_STREAM tcp 209.85.227.105 80
-    AF_INET SOCK_STREAM tcp 209.85.227.106 80
+    $ ./getaddrinfo google.com http
+    AF_INET SOCK_STREAM tcp 216.58.213.78 80 google.com
+    AF_INET SOCK_DGRAM udp 216.58.213.78 80
+    AF_INET6 SOCK_STREAM tcp 2a00:1450:4009:810::200e 80
+    AF_INET6 SOCK_DGRAM udp 2a00:1450:4009:810::200e 80
